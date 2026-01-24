@@ -258,7 +258,7 @@
 
                             <div
                                 v-if="status === 'success'"
-                                class="flex items-start gap-2 text-sm text-primary"
+                                class="flex items-start gap-2 text-sm text-green-400"
                             >
                                 <svg
                                     class="w-5 h-5"
@@ -331,7 +331,7 @@ const handleSubmit = async () => {
 
         status.value = "success";
         message.value =
-            "You are on the list. We will reach out with early access.";
+            "You're on the list! We will reach out when ACE 🎾 DFS is available.";
         email.value = "";
         hasBlurredEmail.value = false;
     } catch (err: any) {
