@@ -324,18 +324,23 @@ const handleSubmit = async () => {
     message.value = "";
 
     try {
-        // Replace this with your API call when wiring up the waitlist backend.
-        await new Promise((resolve) => setTimeout(resolve, 900));
+        await $fetch("/api/waitlist", {
+            method: "POST",
+            body: { email: email.value },
+        });
 
         status.value = "success";
         message.value =
             "You are on the list. We will reach out with early access.";
         email.value = "";
         hasBlurredEmail.value = false;
-    } catch (err) {
+    } catch (err: any) {
         console.error("Waitlist submission failed", err);
         status.value = "error";
-        message.value = "Something went wrong. Please try again.";
+        message.value =
+            err?.data?.message ??
+            err?.statusMessage ??
+            "Something went wrong. Please try again.";
     }
 };
 </script>
