@@ -43,10 +43,9 @@
                         <p
                             class="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl"
                         >
-                            Be the first to take your DFS tennis game to the
-                            next level with ACE 🎾 DFS. Get AI-driven insights
-                            and fine-tuned lineup optimization to dominate your
-                            DFS tennis contests.
+                            Take your DFS tennis game to the next level with
+                            AI-driven insights and fine-tuned lineup
+                            optimization.
                         </p>
                     </div>
 
@@ -331,7 +330,7 @@ const handleSubmit = async () => {
 
         status.value = "success";
         message.value =
-            "You're on the list! We will reach out when ACE 🎾 DFS is available.";
+            "You're on the list! Be on the lookout for launch details.";
         email.value = "";
         hasBlurredEmail.value = false;
     } catch (err: any) {
