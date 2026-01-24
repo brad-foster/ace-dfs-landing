@@ -1,5 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from "nuxt/config";
+
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: true }
-})
+    compatibilityDate: "2025-07-15",
+    devtools: { enabled: true },
+    css: ["~/assets/tennis-dfs-theme.css"],
+    postcss: {
+        plugins: {
+            "@tailwindcss/postcss": {},
+        },
+    },
+});

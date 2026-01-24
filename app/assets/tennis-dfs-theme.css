@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+    /* Primary: white for main backgrounds */
+    --color-primary: #ffffff;
+    /* Secondary: dark navy for text and headers */
+    --color-secondary: #0b1d3a;
+    /* Tertiary: light navy for panels and borders */
+    --color-tertiary: #1f3a63;
+    /* Quaternary: neon orange for accents and CTAs */
+    --color-quaternary: #ff6b00;
+    /* Error: standard red for errors */
+    --color-error: #dc2626;
+    /* Success: brighter green for confirmations */
+    --color-success: #22c55e;
+    /* Failure: brighter red for destructive states */
+    --color-failure: #ef4444;
+    --font-heading:
+        "League Spartan", "Inter", "Helvetica Neue", Arial, sans-serif;
+    --font-sans: "Inter", "Helvetica", "Arial", "sans-serif";
+    --shadow-tennis:
+        0 12px 32px rgba(17, 24, 39, 0.25), 0 0 14px rgba(34, 197, 94, 0.18);
+    --background-image-tennis-gradient: linear-gradient(
+        135deg,
+        #b4ff00 0%,
+        #a1e600 50%,
+        #8dcc00 100%
+    );
+}
