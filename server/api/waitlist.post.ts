@@ -36,22 +36,29 @@ export default defineEventHandler(async (event) => {
 
     const config = useRuntimeConfig();
     const supabaseUrl = config.supabaseUrl as string | undefined;
-    const supabaseAnonKey = config.supabaseAnonKey as string | undefined;
+    const supabaseSecretKey = config.supabaseSecretKey as string | undefined;
 
-    if (!supabaseUrl || !supabaseAnonKey) {
+    if (!supabaseUrl || !supabaseSecretKey) {
         throw createError({
             statusCode: 500,
             statusMessage: "Supabase configuration is missing.",
         });
     }
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+    const supabase = createClient(supabaseUrl, supabaseSecretKey, {
         auth: { persistSession: false, autoRefreshToken: false },
     });
 
     const { error } = await supabase.from("waitlist").insert({ email });
 
     if (error) {
+        console.error("[waitlist] supabase error", {
+            code: error.code,
+            message: error.message,
+            details: error.details,
+            hint: error.hint,
+        });
+
         if (
             error.code === "23505" ||
             error.message.includes("waitlist_email_unique")
@@ -59,6 +66,13 @@ export default defineEventHandler(async (event) => {
             throw createError({
                 statusCode: 409,
                 statusMessage: "That email is already on the waitlist.",
+            });
+        }
+
+        if (error.code === "42501") {
+            throw createError({
+                statusCode: 403,
+                statusMessage: "Waitlist insert blocked by security policy.",
             });
         }
 
